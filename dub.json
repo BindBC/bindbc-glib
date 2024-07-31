@@ -1,0 +1,50 @@
+{
+	"name": "bindbc-glib",
+	"description": "Static & dynamic bindings to GLib & GObject, compatible with BetterC, @nogc, and nothrow.",
+	"authors": ["Aya Partridge"],
+	"license": "BSL-1.0",
+	
+	"dependencies": {"bindbc-common": "~>1.0.0"},
+	"targetType": "staticLibrary",
+	"targetPath": "lib",
+	"targetName": "BindBC_GLib",
+	
+	"configurations": [
+		{
+			"name": "dynamic",
+			"dependencies": {"bindbc-loader": "~>1.1.0"},
+		},
+		{
+			"name": "dynamicBC",
+			"dependencies": {"bindbc-loader": "~>1.1.0"},
+			"subConfigurations": {
+				"bindbc-loader": "yesBC",
+				"bindbc-common": "yesBC",
+			},
+			"buildOptions": ["betterC"],
+		},
+		{
+			"name": "static",
+			"versions": ["BindGLib_Static"],
+		},
+		{
+			"name": "staticBC",
+			"subConfigurations": {
+				"bindbc-common": "yesBC",
+			},
+			"buildOptions": ["betterC"],
+			"versions": ["BindGLib_Static"],
+		},
+	],
+	
+	"subPackages": [
+		{
+			"name": "gobject",
+			"sourcePaths": ["gobject"],
+			"importPaths": ["gobject"],
+			"dependencies": {"bindbc-glib": {"path": "../"}},
+			"targetPath": "lib",
+			"targetName": "BindBC_GObject",
+		},
+	],
+}
