@@ -89,11 +89,11 @@ pragma(inline,true) nothrow @nogc{
 		g_type_value_table_peek(type) !is null;
 	
 	static if(glibVersion >= Version(2,70,0))
-	bool G_TYPE_IS_FINAL(GType type) pure =>
+	bool G_TYPE_IS_FINAL(GType type) =>
 		g_type_test_flags(type, G_TYPE_FLAG_FINAL) != 0;
 	
 	static if(glibVersion >= Version(2,76,0))
-	bool G_TYPE_IS_DEPRECATED(GType type) pure =>
+	bool G_TYPE_IS_DEPRECATED(GType type) =>
 		g_type_test_flags(type, G_TYPE_FLAG_DEPRECATED) != 0;
 }
 
