@@ -15,6 +15,7 @@ import glib.main;
 import glib.quark;
 import glib.string;
 import glib.types;
+import glib.poll;
 
 mixin(makeEnumBind(q{GIOCondition}, members: (){
 	EnumMember[] ret = [
